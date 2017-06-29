@@ -1,0 +1,18 @@
+CREATE TABLE User (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Authority (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	description VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE UserXAuthority (
+	userId INT NOT NULL,
+	authorityId INT NOT NULL,
+	FOREIGN KEY (userId) REFERENCES User(id),
+	FOREIGN KEY (authorityId) REFERENCES Authority(id),
+	PRIMARY KEY (userId, authorityId),
+);
