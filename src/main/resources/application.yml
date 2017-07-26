@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: default,local
   application:
     name: oauth-v1
 server:
@@ -8,9 +10,6 @@ server:
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:11000/eureka/
 logging:
   level:
     PROTOCOL_MESSAGE: ERROR
@@ -27,9 +26,6 @@ logging:
 gft:
   saml:
     idpMetadata: https://workspace-int.gft.com/idp/shibboleth
-  ldap:
-    domain: gft.com
-    url: ldap://dcher1.gft.com/
   oauth2:
     keystore:
       password: mySecretKey

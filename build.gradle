@@ -2,6 +2,9 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
 }
 
 plugins {
@@ -11,6 +14,7 @@ plugins {
 apply plugin: 'java-library'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'docker'
 
 group = 'com.gft'
 version = '0.0.1-SNAPSHOT'
@@ -64,4 +68,16 @@ dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+    applicationName = 'oauth2'
+    baseImage = 'java:8'
+    push = false // Would push to a Docker Hub account
+    applicationName = jar.baseName
+    addFile {
+        from jar
+        rename {'app.jar'}
+    }
+    entryPoint(['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
 }

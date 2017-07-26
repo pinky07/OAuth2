@@ -1,16 +1,6 @@
 {
   "properties": [
     {
-      "name": "gft.ldap.domain",
-      "type": "java.lang.String",
-      "description": "A description for 'gft.ldap.domain'"
-    },
-    {
-      "name": "gft.ldap.url",
-      "type": "java.lang.String",
-      "description": "A description for 'gft.ldap.url'"
-    },
-    {
       "name": "gft.oauth2.keystore.password",
       "type": "java.lang.String",
       "description": "A description for 'gft.oauth2.keystore.password.'"
