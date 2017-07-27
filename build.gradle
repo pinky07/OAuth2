@@ -75,7 +75,7 @@ task buildDocker(type: Docker, dependsOn: build) {
     baseImage = 'openjdk:8'
     push = false // Would push to a Docker Hub account
     applicationName = jar.baseName
-    addFile 'src/main/java/resources/workspace-int.gft.com.cer', 'workspace-int.gft.com.cer'
+    addFile "${projectDir}/src/main/java/resources/workspace-int.gft.com.cer", 'workspace-int.gft.com.cer'
     runCommand 'ls -al'
     runCommand 'keytool -importcert -alias workspace-int.gft.com-1 -keystore "%JAVA_HOME%/jre/lib/security/cacerts" -storepass changeit -file workspace-int.gft.com.cer'
     // runCommand 'keytool -importcert -alias workspace-int.gft.com-1 -keystore "%JAVA_HOME%/jre/lib/security/cacerts" -storepass changeit -file workspace-int.gft.com.cer -noprompt'
