@@ -79,7 +79,7 @@ task buildDocker(type: Docker, dependsOn: build) {
         from 'src/main/java/resources/workspace-int.gft.com.cer'
         rename {'workspace-int.gft.com.cer'}
     }
-    runCommand '/java/bin/keytool -importcert -alias workspace-int.gft.com-1 -keystore "%JAVA_HOME%/jre/lib/security/cacerts" -storepass changeit -file workspace-int.gft.com.cer -noprompt'
+    runCommand 'keytool -importcert -alias workspace-int.gft.com-1 -keystore "%JAVA_HOME%/jre/lib/security/cacerts" -storepass changeit -file workspace-int.gft.com.cer -noprompt'
     addFile {
         from jar
         rename {'app.jar'}
