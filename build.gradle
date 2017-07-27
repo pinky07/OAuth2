@@ -11,7 +11,7 @@ plugins {
     id 'org.springframework.boot' version '1.5.4.RELEASE'
 }
 
-apply plugin: 'java-library'
+apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'docker'
@@ -38,30 +38,30 @@ ext {
 dependencies {
 
     // Web
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
 
     // Security
-    implementation('org.springframework.cloud:spring-cloud-starter-security')
+    compile('org.springframework.cloud:spring-cloud-starter-security')
 
     // OAuth2 + JWT
-    implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
-    implementation('org.springframework.security:spring-security-jwt')
+    compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+    compile('org.springframework.security:spring-security-jwt')
 
     // SAML
-    implementation('org.springframework.security.extensions:spring-security-saml2-core:1.0.2.RELEASE')
-    implementation('org.springframework.boot:spring-boot-configuration-processor')
+    compile('org.springframework.security.extensions:spring-security-saml2-core:1.0.2.RELEASE')
+    compile('org.springframework.boot:spring-boot-configuration-processor')
 
     // Eureka
-    implementation('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
 
     // Database
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation('org.flywaydb:flyway-core')
-    implementation("com.h2database:h2")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile('org.flywaydb:flyway-core')
+    compile("com.h2database:h2")
 
     // Test
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {
