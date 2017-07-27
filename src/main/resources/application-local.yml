@@ -1,3 +1,5 @@
+server:
+  port: 11001
 eureka:
   client:
     serviceUrl:
