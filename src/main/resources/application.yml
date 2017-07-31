@@ -6,6 +6,7 @@ spring:
 server:
   context-path: /uaa
   use-forward-headers: true
+  port: 11003
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
@@ -28,5 +29,3 @@ gft:
   oauth2:
     keystore:
       password: mySecretKey
-server:
-  port: 11003
