@@ -71,7 +71,8 @@ dependencyManagement {
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
-    applicationName = 'oauth2'
+    tag = "com.gft.oauth2"
+    tagVersion = 'latest'
     baseImage = 'openjdk:8'
     push = false // Would push to a Docker Hub account
     applicationName = jar.baseName
