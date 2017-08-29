@@ -51,7 +51,7 @@ import java.util.*;
  *
  * @author Manuel Yepez
  * @author Ruben Jimenez
- * @Author Riccardo Bove
+ * @author Riccardo Bove
  */
 @Configuration
 @EnableWebSecurity
