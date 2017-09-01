@@ -71,10 +71,28 @@ dependencyManagement {
     }
 }
 
-task buildDocker(type: Docker, dependsOn: build) {
-    tag = "com.gft.oauth2"
+task buildDockerCI(type: Docker, dependsOn: build) {
+    tag = 'com.gft.oauth2.ci'
     tagVersion = 'latest'
-    baseImage = 'openjdk:8'
+    baseImage = 'openjdk:alpine'
+    push = false // Would push to a Docker Hub account
+    applicationName = jar.baseName
+    addFile {
+        from "${projectDir}/src/main/resources/workspace-int.gft.com.cer"
+        into '/'
+    }
+    runCommand 'keytool -importcert -alias workspace-int.gft.com-1 -keystore "$JAVA_HOME/jre/lib/security/cacerts" -storepass changeit -file /workspace-int.gft.com.cer -noprompt'
+    addFile {
+        from jar
+        rename {'app.jar'}
+    }
+    entryPoint(['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
+}
+
+task buildDockerQA(type: Docker, dependsOn: build) {
+    tag = 'com.gft.oauth2.qa'
+    tagVersion = 'latest'
+    baseImage = 'openjdk:alpine'
     push = false // Would push to a Docker Hub account
     applicationName = jar.baseName
     addFile {

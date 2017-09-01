@@ -114,8 +114,8 @@ cleanUpDocker
 
 # Stop application
 echo 'Removing previous app image and containers...'
-removeContainer 'com.gft.oauth2.ci' 'latest'
-removeImage 'com.gft.oauth2.ci' 'latest'
+removeContainer 'com.gft.oauth2.qa' 'latest'
+removeImage 'com.gft.oauth2.qa' 'latest'
 
 #
 # References:
